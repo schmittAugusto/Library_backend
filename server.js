@@ -59,19 +59,33 @@ function initial() {
 }
 
 var corsOptions = {
-  //origin: ["https://library-application-backend.onrender.com"],
-  //credentials: true,
-  
-    origin: "*",
-    //credentials: true,
-    withCredentials: false,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-    optionsSuccessStatus: 204
+  origin: ["https://library-application-backend.onrender.com"],
+  credentials: true,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204
   
 };
 
 app.use(cors(corsOptions));
+app.get('/private', function(req, res) {
+  res.set('Access-Control-Allow-Origin', 'https://library-application-backend.onrender.com')
+  res.set('Access-Control-Allow-Credentials', 'true')
+  if(req.session.loggedIn === true) {
+    res.send('THIS IS THE SECRET')
+  } else {
+    res.send('Please login first')
+  }
+});
+
+app.get('/public', function(req, res) {
+  res.set('Access-Control-Allow-Origin', 'https://library-application-backend.onrender.com')
+  res.set('Access-Control-Allow-Methods', 'GET, OPTIONS')
+  res.set('Access-Control-Allow-Headers', 'Content-Type')
+  res.send(JSON.stringify({
+    message: 'This is public info'
+  }))
+});
 
 // parse requests of content-type - application/json
 app.use(express.json());
