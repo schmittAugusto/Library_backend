@@ -71,6 +71,7 @@ app.use(cors(corsOptions));
 app.get('/private', function(req, res) {
   res.set('Access-Control-Allow-Origin', 'https://library-application-backend.onrender.com')
   res.set('Access-Control-Allow-Credentials', 'true')
+  res.set('Access-Control-Allow-Headers', 'Content-Type', 'Authorization')
   if(req.session.loggedIn === true) {
     res.send('THIS IS THE SECRET')
   } else {
@@ -81,7 +82,7 @@ app.get('/private', function(req, res) {
 app.get('/public', function(req, res) {
   res.set('Access-Control-Allow-Origin', 'https://library-application-backend.onrender.com')
   res.set('Access-Control-Allow-Methods', 'GET, OPTIONS')
-  res.set('Access-Control-Allow-Headers', 'Content-Type')
+  res.set('Access-Control-Allow-Headers', 'Content-Type', 'Authorization')
   res.send(JSON.stringify({
     message: 'This is public info'
   }))
