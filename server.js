@@ -64,6 +64,7 @@ var corsOptions = {
   
     origin: "*",
     //credentials: true,
+    withCredentials: false,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
     optionsSuccessStatus: 204
