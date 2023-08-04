@@ -59,7 +59,7 @@ function initial() {
 }
 
 var corsOptions = {
-  origin: "https://library-application-backend.onrender.com",
+  origin: ["https://library-application-backend.onrender.com","https://main--precious-donut-b7dbe4.netlify.app"],
   credentials: true,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false,
