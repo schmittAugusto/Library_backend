@@ -59,8 +59,15 @@ function initial() {
 }
 
 var corsOptions = {
-  origin: ["https://library-application-backend.onrender.com"],
-  credentials: true,
+  //origin: ["https://library-application-backend.onrender.com"],
+  //credentials: true,
+  
+    origin: "*",
+    credentials: true,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204
+  
 };
 
 app.use(cors(corsOptions));
