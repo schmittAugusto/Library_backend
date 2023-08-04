@@ -59,7 +59,7 @@ function initial() {
 }
 
 var corsOptions = {
-  origin: ["http://localhost:3031"],
+  origin: ["https://library-application-backend.onrender.com"],
   credentials: true,
 };
 
