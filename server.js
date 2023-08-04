@@ -72,7 +72,7 @@ app.use(cors(corsOptions));
 app.get('/private', function(req, res) {
   res.set('Access-Control-Allow-Origin', 'https://main--precious-donut-b7dbe4.netlify.app')
   res.set('Access-Control-Allow-Credentials', 'true')
-  res.set('Access-Control-Allow-Headers', 'Content-Type', 'Authorization')
+  res.set('Access-Control-Allow-Headers', 'Content-Type', 'Authorization', 'Permissions-Policy')
   if(req.session.loggedIn === true) {
     res.send('THIS IS THE SECRET')
   } else {
@@ -83,7 +83,7 @@ app.get('/private', function(req, res) {
 app.get('/public', function(req, res) {
   res.set('Access-Control-Allow-Origin', 'https://main--precious-donut-b7dbe4.netlify.app')
   res.set('Access-Control-Allow-Methods', 'GET, OPTIONS')
-  res.set('Access-Control-Allow-Headers', 'Content-Type', 'Authorization')
+  res.set('Access-Control-Allow-Headers', 'Content-Type', 'Authorization', 'Permissions-Policy')
   res.send(JSON.stringify({
     message: 'This is public info'
   }))
