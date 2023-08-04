@@ -59,34 +59,35 @@ function initial() {
 }
 
 var corsOptions = {
-  origin: ["https://library-application-backend.onrender.com"],
+  origin: "https://library-application-backend.onrender.com",
   credentials: true,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false,
-  optionsSuccessStatus: 204
+  optionsSuccessStatus: 204,
+  Headers:['Content-Type', 'Authorization'],
   
 };
 
 app.use(cors(corsOptions));
-app.get('/private', function(req, res) {
-  res.set('Access-Control-Allow-Origin', 'https://library-application-backend.onrender.com')
-  res.set('Access-Control-Allow-Credentials', 'true')
-  res.set('Access-Control-Allow-Headers', 'Content-Type', 'Authorization')
-  if(req.session.loggedIn === true) {
-    res.send('THIS IS THE SECRET')
-  } else {
-    res.send('Please login first')
-  }
-});
+// app.get('/private', function(req, res) {
+//   res.set('Access-Control-Allow-Origin', 'https://library-application-backend.onrender.com')
+//   res.set('Access-Control-Allow-Credentials', 'true')
+//   res.set('Access-Control-Allow-Headers', 'Content-Type', 'Authorization')
+//   if(req.session.loggedIn === true) {
+//     res.send('THIS IS THE SECRET')
+//   } else {
+//     res.send('Please login first')
+//   }
+// });
 
-app.get('/public', function(req, res) {
-  res.set('Access-Control-Allow-Origin', 'https://library-application-backend.onrender.com')
-  res.set('Access-Control-Allow-Methods', 'GET, OPTIONS')
-  res.set('Access-Control-Allow-Headers', 'Content-Type', 'Authorization')
-  res.send(JSON.stringify({
-    message: 'This is public info'
-  }))
-});
+// app.get('/public', function(req, res) {
+//   res.set('Access-Control-Allow-Origin', 'https://library-application-backend.onrender.com')
+//   res.set('Access-Control-Allow-Methods', 'GET, OPTIONS')
+//   res.set('Access-Control-Allow-Headers', 'Content-Type', 'Authorization')
+//   res.send(JSON.stringify({
+//     message: 'This is public info'
+//   }))
+// });
 
 // parse requests of content-type - application/json
 app.use(express.json());
