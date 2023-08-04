@@ -59,7 +59,7 @@ function initial() {
 }
 
 var corsOptions = {
-  origin: ["https://library-application-backend.onrender.com","https://main--precious-donut-b7dbe4.netlify.app"],
+  origin: ["https://library-application-backend.onrender.com","https://64cd4ccfdad64a491f2bac65--precious-donut-b7dbe4.netlify.app/"],
   credentials: true,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false,
@@ -70,9 +70,10 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 app.get('/private', function(req, res) {
-  res.set('Access-Control-Allow-Origin', 'https://main--precious-donut-b7dbe4.netlify.app')
+  res.set('Access-Control-Allow-Origin', 'https://64cd4ccfdad64a491f2bac65--precious-donut-b7dbe4.netlify.app/')
   res.set('Access-Control-Allow-Credentials', 'true')
-  res.set('Access-Control-Allow-Headers', 'Content-Type', 'Authorization', 'Permissions-Policy')
+  res.set('Access-Control-Allow-Headers', 'Content-Type', 'Authorization')
+  res.setHeader('Permissions-Policy', 'browsing-topics=*')
   if(req.session.loggedIn === true) {
     res.send('THIS IS THE SECRET')
   } else {
@@ -81,9 +82,10 @@ app.get('/private', function(req, res) {
 });
 
 app.get('/public', function(req, res) {
-  res.set('Access-Control-Allow-Origin', 'https://main--precious-donut-b7dbe4.netlify.app')
+  res.set('Access-Control-Allow-Origin', 'https://64cd4ccfdad64a491f2bac65--precious-donut-b7dbe4.netlify.app/')
   res.set('Access-Control-Allow-Methods', 'GET, OPTIONS')
-  res.set('Access-Control-Allow-Headers', 'Content-Type', 'Authorization', 'Permissions-Policy')
+  res.set('Access-Control-Allow-Headers', 'Content-Type', 'Authorization')
+  res.setHeader('Permissions-Policy', 'browsing-topics=*')
   res.send(JSON.stringify({
     message: 'This is public info'
   }))
